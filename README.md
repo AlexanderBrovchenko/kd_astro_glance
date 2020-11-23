@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1 align="center">Welcome to kd_astro_glance 👋</h1>
 <p>
 </p>
@@ -73,3 +74,7 @@ After preparing env.local.test DATABASE_URL line and running command lines from 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
+=======
+# kd_astro_glance
+A simple natal horoscopes builder with some explanations giving
+>>>>>>> a64fa74c4c8ff368d75b87c313db30e7e984d7f6
