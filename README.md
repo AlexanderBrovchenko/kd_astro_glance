@@ -22,7 +22,7 @@
 1. Clone the project from GitHub:
 
         $ cd YOUR_WEBSITE_FOLDER
-        $ git clone https://gihub.com/AlexanderBrovchenko/kd_astro_glance.git
+        $ git clone https://github.com/AlexanderBrovchenko/kd_astro_glance.git
 
  2a. (if needed) Install Composer (see http://getcomposer.org/download)
 
