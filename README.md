@@ -12,7 +12,7 @@
 
 ## Requirements
 
-- PHP >= 7.3
+- PHP >= 7.4
 - GD PHP Extension
 - MYSQL >= 5
 - And the [usual Symfony application requirements](https://symfony.com/doc/current/reference/requirements)
