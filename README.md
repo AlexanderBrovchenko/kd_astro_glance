@@ -33,7 +33,7 @@
 
  3. Make sure the swiss ephemerides library works properly:
     following command should give big table of float numbers without any error messages.
-    The good thing: in case swetest is not ready it's to recommend a command line to activate the library
+    The good thing: in case swetest is not ready it's to recommend a command line to activate the library ($ sudo apt install libswe-dev)
 
     $ swetest -edirsrc/Services/sweph -j2459172.5 -p0123456789DAttt -eswe -house46.6,24.72,p -ut16:45 -flsj -g, -head
 
