@@ -16,6 +16,7 @@
 - GD PHP Extension
 - MYSQL >= 5
 - And the [usual Symfony application requirements](https://symfony.com/doc/current/reference/requirements)
+ (Make sure that doctrine, phpunit bundles, symfony/form are added properly)
 
 ## Install
 
