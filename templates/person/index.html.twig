@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css">
         <style>
             body {
                 background: url('{{ root_prefix }}images/198f4ec6774226bdd11d6bd649a5c226.jpg') no-repeat center center fixed;
@@ -25,6 +26,7 @@
                 background: transparent;
                 border: 0;
                 color: rgb(51, 122, 183);
+                margin-top: 10px;
                 margin-bottom: 10px;
             }
             .fake_button:hover, .fake_button_right:hover {
@@ -187,6 +189,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.full.min.js" ></script>
     <script>
         $(function () {
         {% if app.user != null %}
@@ -200,6 +203,7 @@
 
         $('#person_timezone').prop('selectedIndex', 0);
 
+        $('#person_place').select2();
         {%  endif %}
         $(window).on("load resize", function () {
             resizeBlockOne();
