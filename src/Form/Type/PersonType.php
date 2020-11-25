@@ -59,7 +59,9 @@ class PersonType extends AbstractType
                       ->orderBy('p.placename', 'ASC');
                 },
                 'choice_label' => function(Place $place){
-                   return $place->getPlacename();
+                   return $place->getPlacename() .
+                   ' (' . substr($place->getLongitude(), 0, 7) .
+                   ', ' . substr($place->getLatitude(), 0, 6) . ')';
                 },
                  'label' => "Birth place: ",
                 'attr' => ['class' => 'form-input'],

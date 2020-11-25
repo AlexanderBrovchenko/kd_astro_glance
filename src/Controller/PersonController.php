@@ -62,9 +62,10 @@ class PersonController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
+            $entityManager = $this->getDoctrine()->getManager();
             $person = $form->getData();
             $person->setUser($user);
-            $person->setPlace($form->get('place')->getData());
+            $person->setPlace($entityManager->merge($form->get('place')->getData()));
 
             if ($form->get('newplace')->isClicked())
             {
@@ -74,7 +75,6 @@ class PersonController extends AbstractController
             if (($newName = $person->getFullname()) != "" && !(empty($person->getId()) &&
                 $this->getDoctrine()->getRepository(Person::class)->isAlreadyStored($newName))) {
 
-                $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($person);
                 $entityManager->flush();
 
@@ -123,9 +123,10 @@ class PersonController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
+            $entityManager = $this->getDoctrine()->getManager();
             $person = $form->getData();
             $person->setUser($user);
-            $person->setPlace($form->get('place')->getData());
+            $person->setPlace($entityManager->merge($form->get('place')->getData()));
             $request->getSession()->set('person', $person);
 
             if ($form->get('newplace')->isClicked())
@@ -139,8 +140,7 @@ class PersonController extends AbstractController
             }
             if ((($newName = $person->getFullname()) != "") &&
                 !$this->getDoctrine()->getRepository(Person::class)->isAlreadyStored($newName, $id)) {
-
-                $entityManager = $this->getDoctrine()->getManager();
+                
                 $entityManager->persist($person);
                 $entityManager->flush();
 

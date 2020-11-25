@@ -27,10 +27,10 @@ class PlaceController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
-            $place = $form->getData();
+            $entityManager = $this->getDoctrine()->getManager();
+            $place = $entityManager->merge($form->getData());
             if (!(empty($place->getId()) && $this->getDoctrine()->getRepository(Place::class)->isAlreadyStored($place->getPlacename())) &&
                 ($place->getLongitude() != $empty_latitude && $place->getLatitude() != $empty_latitude)) {
-                $entityManager = $this->getDoctrine()->getManager();
 
                 $entityManager->persist($place);
                 $entityManager->flush();
@@ -41,7 +41,10 @@ class PlaceController extends AbstractController
                     $lastPerson->setPlace($place);
                     $lastPersonId = $lastPerson->getId();
                 }
-                return $this->redirectToRoute("person" . ($lastPersonId > 0 ? "/" . $lastPersonId : ""));
+                if ($lastPersonId > 0)
+                    return $this->redirectToRoute("person_show", ['id' => $lastPersonId]);
+                else
+                    return $this->redirectToRoute("person");
             }
             else
                 $isStored = true;
@@ -74,7 +77,8 @@ class PlaceController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
-            $place = $form->getData();
+            $entityManager = $this->getDoctrine()->getManager();
+            $place = $entityManager->merge($form->getData());
 
             if (!($this->getDoctrine()->getRepository(Place::class)->isAlreadyStored($place->getPlacename(), $id))) {
                 $entityManager = $this->getDoctrine()->getManager();
@@ -88,8 +92,10 @@ class PlaceController extends AbstractController
                     $lastPerson->setPlaceId($place->getId());
                     $lastPersonId = $lastPerson->getId();
                 }
-                return $this->redirectToRoute("person" . ($lastPersonId > 0 ? "/" . $lastPersonId : ""));
-            }
+                if ($lastPersonId > 0)
+                    return $this->redirectToRoute("person_show", ['id' => $lastPersonId]);
+                else
+                    return $this->redirectToRoute("person"); }
             else
                 $isStored = true;
         }
