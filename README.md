@@ -12,17 +12,18 @@
 
 ## Requirements
 
-- PHP >= 7.2
+- PHP >= 7.4
 - GD PHP Extension
 - MYSQL >= 5
 - And the [usual Symfony application requirements](https://symfony.com/doc/current/reference/requirements)
+ (Make sure that doctrine, phpunit bundles, symfony/form are added properly)
 
 ## Install
 
 1. Clone the project from GitHub:
 
         $ cd YOUR_WEBSITE_FOLDER
-        $ git clone https://gihub.com/AlexanderBrovchenko/kd_astro_glance.git
+        $ git clone https://github.com/AlexanderBrovchenko/kd_astro_glance.git
 
  2a. (if needed) Install Composer (see http://getcomposer.org/download)
 
@@ -33,7 +34,7 @@
 
  3. Make sure the swiss ephemerides library works properly:
     following command should give big table of float numbers without any error messages.
-    The good thing: in case swetest is not ready it's to recommend a command line to activate the library
+    The good thing: in case swetest is not ready it's to recommend a command line to activate the library ($ sudo apt install libswe-dev)
 
     $ swetest -edirsrc/Services/sweph -j2459172.5 -p0123456789DAttt -eswe -house46.6,24.72,p -ut16:45 -flsj -g, -head
 
