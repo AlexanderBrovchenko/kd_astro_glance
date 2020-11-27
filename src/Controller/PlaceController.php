@@ -35,10 +35,12 @@ class PlaceController extends AbstractController
                 $entityManager->persist($place);
                 $entityManager->flush();
 
-                $lastPerson = $request->getSession()->get('person');
+                $session = $request->getSession();
+                $lastPerson = $session->get('person');
                 $lastPersonId = 0;
                 if (!empty($lastPerson)) {
                     $lastPerson->setPlace($place);
+                    $session->set('person', $lastPerson);
                     $lastPersonId = $lastPerson->getId();
                 }
                 if ($lastPersonId > 0)
@@ -86,10 +88,12 @@ class PlaceController extends AbstractController
                 $entityManager->persist($place);
                 $entityManager->flush();
 
-                $lastPerson = $request->getSession()->get('person');
+                $session = $request->getSession();
+                $lastPerson = $session->get('person');
                 $lastPersonId = 0;
                 if (!empty($lastPerson)) {
                     $lastPerson->setPlaceId($place->getId());
+                    $session->set('person', $lastPerson);
                     $lastPersonId = $lastPerson->getId();
                 }
                 if ($lastPersonId > 0)

@@ -34,7 +34,7 @@ class Natal
     $hour = intval($birthdate->format('G'));
     $minute = intval($birthdate->format('i'));
 
-    $timezone = (int)(TimezoneHelper::getOffset($person->getTimezone()));
+    $timezone = intval(TimezoneHelper::getOffset($person->getTimezone()));
 
     $place = $person->getPlace();
     if (empty($place))
@@ -97,25 +97,19 @@ class Natal
 
     $abs_tz = abs($intz);
     $the_hours = floor($abs_tz);
-    $fraction_of_hour = $abs_tz - floor($abs_tz);
-    $the_minutes = 60 * $fraction_of_hour;
-    $whole_minutes = floor(60 * $fraction_of_hour);
-    $fraction_of_minute = $the_minutes - $whole_minutes;
-    $whole_seconds = round(60 * $fraction_of_minute);
+    $the_minutes = explode(':', TimezoneHelper::getOffset($person->getTimezone()))[1];
 
     if ($intz >= 0) {
       $inhours = $inhours - $the_hours;
-      $inmins = $inmins - $whole_minutes;
-      $insecs = $insecs - $whole_seconds;
+      $inmins = $inmins - $the_minutes;
     } else {
       $inhours = $inhours + $the_hours;
-      $inmins = $inmins + $whole_minutes;
-      $insecs = $insecs + $whole_seconds;
+      $inmins = $inmins + $the_minutes;
     }
 
     // adjust date and time for minus hour due to time zone taking the hour negative
     $utdatenow = strftime("%d.%m.%Y", mktime($inhours, $inmins, $insecs, $inmonth, $inday, $inyear));
-    $utnow = strftime("%H:%M:%S", mktime($inhours, $inmins, $insecs, $inmonth, $inday, $inyear));
+     $utnow = strftime("%H:%M:%S", mktime($inhours, $inmins, $insecs, $inmonth, $inday, $inyear));
     $julian_date = Composite::GetJulianDate($inhours, $inmins, $insecs, $inmonth, $inday, $inyear);
 
     $PATH = getenv('PATH');
@@ -247,7 +241,8 @@ class Natal
       if (!empty($restored_name))
           $restored_name .= ", born ";
 
-    $line1 = $restored_name . strftime("%A, %B %d, %Y at %H:%M (time zone = GMT $tz hours)", mktime(intval($hour), intval($minute), intval($secs), intval($month), intval($day), intval($year)));
+    $line1 = $restored_name . strftime("%A, %B %d, %Y at %H:%M", mktime(intval($hour), intval($minute), intval($secs), intval($month), intval($day), intval($year)));
+    $line1 .= ' (time zone = GMT ' . TimezoneHelper::getOffset($person->getTimezone()) . ')';
     $line1 .= " at " . $long_deg . $ew_txt . sprintf("%02d", $long_min) . " and " . $lat_deg . $ns_txt . sprintf("%02d", $lat_min);
     
     $hr_ob = $hour;

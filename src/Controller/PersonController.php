@@ -58,11 +58,11 @@ class PersonController extends AbstractController
 
         $form = $this->prepareAndCreateForm($person, $natal);
 
+        $entityManager = $this->getDoctrine()->getManager();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $entityManager = $this->getDoctrine()->getManager();
             $person = $form->getData();
             $person->setUser($user);
             $person->setPlace($entityManager->merge($form->get('place')->getData()));
@@ -81,7 +81,7 @@ class PersonController extends AbstractController
                 return $this->redirectToRoute("person_show", ['id' => $person->getId()]);
             }
         }
-        $form->get('place')->setData($person->getPlace());
+        $form->get('place')->setData($entityManager->merge($person->getPlace()));
 
          return $this->render('person/index.html.twig', [
             'person' => $person, 
@@ -118,12 +118,12 @@ class PersonController extends AbstractController
             return $this->redirectToRoute("person");
         }
         $form = $this->prepareAndCreateForm($person, $natal);
-
+        $entityManager = $this->getDoctrine()->getManager();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $entityManager = $this->getDoctrine()->getManager();
+
             $person = $form->getData();
             $person->setUser($user);
             $person->setPlace($entityManager->merge($form->get('place')->getData()));
@@ -149,7 +149,7 @@ class PersonController extends AbstractController
         }
         
         $others = $this->getOthers($id);
-        $form->get('place')->setData($person->getPlace());
+        $form->get('place')->setData($entityManager->merge($person->getPlace()));
         
         return $this->render('person/index.html.twig', [
             'person' => $person,
