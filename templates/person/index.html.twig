@@ -258,43 +258,33 @@
                     hint += '-planet-' + html_num_to_open;
                 else
                     hint += '-sign-' + html_num_to_open;
-                $('#fade' + hint).show(1000);
+                $('#fade' + hint).show(100);
             }
             return false;
         });
 
         $('.popup-close').click(function() {
-            $(this).parents('.popup-fade').hide({
-                duration: 800,
-                easing: "linear",
-                queue: false
-            });
+            $(this).parents('.popup-fade').toggle('explode');
             return false;
         });
 
         $(document).keydown(function(e) {
             if (e.keyCode === 27) {
                 e.stopPropagation();
-                $('.popup-fade').hide({
-                    duration: 800,
-                    easing: "linear",
-                    queue: false
-                });
+                $('.popup-fade').toggle('explode');
             }
         });
 
         $('.popup-fade').click(function(e) {
             if ($(e.target).closest('.popup').length == 0) {
-                $(this).hide({
-                    duration: 800,
-                    easing: "linear",
-                    queue: false
-                });
+                $(this).toggle('explode');
             }
         });
 
         function resizeBlockOne() {
             $('.natal-wheel').css('max-height', $(window).height());
+            if ($('.two table').length == 0)
+                    return false;
             if ($('.two table')[0].offsetWidth > $('.natal-wheel')[0].offsetLeft)
                 $('.one').css('top', $('.two')[0].offsetHeight + 'px');
             else
