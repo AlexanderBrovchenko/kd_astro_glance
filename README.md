@@ -78,4 +78,8 @@ Give a ⭐️ if this project helped you!
 =======
 # kd_astro_glance
 A simple natal horoscopes builder with some explanations giving
+![image](https://user-images.githubusercontent.com/67737720/163666683-589af8f9-26e6-41f4-a547-33969420ed37.png)
+![image](https://user-images.githubusercontent.com/67737720/163666750-4876a972-a053-449f-ba43-6d0f1cf8ffac.png)
+![image](https://user-images.githubusercontent.com/67737720/163666773-117d5db2-64df-4bb6-96e8-19d920635e66.png)
+![image](https://user-images.githubusercontent.com/67737720/163666787-220867f2-8406-41f3-b175-5b99bd1318de.png)
 >>>>>>> a64fa74c4c8ff368d75b87c313db30e7e984d7f6
