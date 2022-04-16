@@ -70,7 +70,7 @@ After preparing env.local.test DATABASE_URL line and running command lines from 
 👤 **Alexander Brovchenko**
 
 * Github: [@AlexanderBrovchenko](https://github.com/AlexanderBrovchenko)
-* LinkedIn: [@alexander-brovchenko-b48a8a6](https://linkedin.com/in/alexander-brovchenko-b48a8a6)
+* LinkedIn: [@alexander-brovchenko-b48a8a6](https://www.linkedin.com/in/alexander-burstein-b48a8a6)
 
 ## Show your support
 
@@ -78,4 +78,8 @@ Give a ⭐️ if this project helped you!
 =======
 # kd_astro_glance
 A simple natal horoscopes builder with some explanations giving
+![image](https://user-images.githubusercontent.com/67737720/163664407-e652c08a-4a47-47ca-968b-ad9d882a3df0.png)
+![image](https://user-images.githubusercontent.com/67737720/163664415-f6bf3d6d-0692-4e6e-8123-e7ee2bec4b07.png)
+![image](https://user-images.githubusercontent.com/67737720/163664427-e303929b-91d4-4b22-84b2-0e2fb5bbfa1f.png)
+![image](https://user-images.githubusercontent.com/67737720/163664472-0a9a1267-287c-40e6-b584-387037d15959.png)
 >>>>>>> a64fa74c4c8ff368d75b87c313db30e7e984d7f6
