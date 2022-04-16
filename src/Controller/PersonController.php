@@ -99,7 +99,7 @@ class PersonController extends AbstractController
             {
                 return $this->redirectToRoute("place");
             }
-            if ($id > 0 && ($buttonNewPerson = $form->get('newperson')) && $$buttonNewPerson->isClicked())
+            if ($id > 0 && ($buttonNewPerson = $form->get('newperson')) && $buttonNewPerson->isClicked())
             {
                 $request->getSession()->remove('person');
                 return $this->redirectToRoute("person");
